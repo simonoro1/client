@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+  const url = "http://localhost:5000/users/login"
+
+  async function user (){
+    const response =  await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "vale",
+        password: "12345"
+      })
+
+    }).then(response => {
+      return response.json()
+    }).catch(error =>  {
+      console.error("error fetchin data", error)
+    })
+    console.log(response)
+  }
+
+ 
+  user()
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      login
     </div>
   );
 }

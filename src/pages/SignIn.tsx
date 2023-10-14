@@ -28,8 +28,7 @@ function SignIn() {
 
         console.log(user)
 
-        const response = signin(user).then(data => console.log(data))
-        // console.log(response)
+        signin(user)
 
         setEmail('')
         setPassword('')

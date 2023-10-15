@@ -4,6 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './context/AuthContext';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+import SignIn from './pages/SignIn';
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+  {
+    path: "/login",
+    element: <SignIn/>
+  }
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +29,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
   <AuthContextProvider>
-    <App />
+  <RouterProvider router={router} />
+      {/* <App /> */}
   </AuthContextProvider>
   </React.StrictMode>
 );

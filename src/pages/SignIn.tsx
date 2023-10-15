@@ -1,10 +1,12 @@
 import React, { ChangeEvent, useState } from 'react'
 import { useSignIn } from '../hooks/useSignIn';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {error, isPending, signin} = useSignIn()
+    const nav = useNavigate()
 
         // Handling the name change
 
@@ -29,10 +31,11 @@ function SignIn() {
         console.log(user)
 
         signin(user)
-
         setEmail('')
         setPassword('')
         // signin hook
+
+        nav('/')
     }
 
   return (

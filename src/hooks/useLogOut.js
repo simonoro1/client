@@ -1,36 +1,36 @@
-import { useState } from "react"
-import { auth, db } from "../firebase/config"
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth"
-import { useAuthContext } from "./useAuthContext"
-import { useNavigate } from "react-router-dom"
-import { collection, doc, updateDoc } from "firebase/firestore"
+import { useState } from "react";
+import { useAuthContext } from "./useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const useLogout = () => {
-    const [error, setError] = useState(null)
-    const [isPending, setIsPending] = useState(false)
-    const {dispatch, user} = useAuthContext()
-    const nav = useNavigate();
+  const [error, setError] = useState(null);
+  const [isPending, setIsPending] = useState(false);
+  const { dispatch, user } = useAuthContext();
+  const nav = useNavigate();
 
+  const logout = async () => {
+    setError(null);
+    setIsPending(true);
 
-
-    const logout = async () => {
-        setError(null)
-        setIsPending(true)
-        const {uid} = user
-        console.log(uid)
-        await updateDoc(doc(db, 'users', uid), {
-            online: false
+    await fetch(
+        "http://localhost:5000/users/logout",
+        {
+          method: "GET",
+          credentials: 'include',
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      )
+        .then(response => response.json()).then(data =>{
+          console.log(data)
         })
-        signOut(auth).then(() => {
-            dispatch({type: 'LOGOUT'})
-            console.log('Logout successful 1')
-            setIsPending(false)
-            nav('/landing')
-        })
-        .catch((err) => {
-            setError(err.message)
-        })
-    }
 
-    return {error, isPending, logout}
-}
+    dispatch({ type: "LOGOUT" });
+    setIsPending(false);
+    nav("/login");
+  };
+
+  return { error, isPending, logout };
+};

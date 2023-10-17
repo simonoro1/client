@@ -11,7 +11,7 @@ export const useAuth = () => {
     setError(null);
     setIsPending(true);
     const response: Response | void = await fetch(
-      "http://localhost:5000/users/check",
+      "http://localhost:5000/users/refresh",
       {
         method: "GET",
         credentials: 'include',
@@ -22,7 +22,11 @@ export const useAuth = () => {
       }
     )
       .then(response => response.json()).then(data =>{
-        console.log('user checked:', data)
+        console.log('user already logged:', data)
+        dispatch({
+          type: 'LOGIN',
+          payload: data
+        })
       })
       .catch((error) => console.log(error));
 

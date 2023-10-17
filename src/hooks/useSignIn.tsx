@@ -30,8 +30,7 @@ export const useSignIn = () => {
       }
     )
       .then(response => response.json()).then(data =>{
-        console.log(data)
-        dispatch({
+         dispatch({
           type: "LOGIN",
           payload: data
         })

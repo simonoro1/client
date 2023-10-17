@@ -16,11 +16,9 @@ function App() {
 
   const handleLogout = () => {
     logout()
-    // nav('/login')
   }
 
   useEffect(() => {
-    
     // Chequear si hay un usuario logeado y refrescar access token
     checkUser()
   }, [])

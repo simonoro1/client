@@ -20,7 +20,6 @@ export const AuthContextProvider = ({children}) => {
         token: null
     })
 
-
     console.log('AuthContext: ', state)
 
     return (

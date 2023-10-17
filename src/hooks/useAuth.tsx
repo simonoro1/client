@@ -22,7 +22,7 @@ export const useAuth = () => {
       }
     )
       .then(response => response.json()).then(data =>{
-        console.log('user already logged:', data)
+        console.log('user already logged')
         dispatch({
           type: 'LOGIN',
           payload: data

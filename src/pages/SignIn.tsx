@@ -39,8 +39,9 @@ function SignIn() {
     }
 
   return (
-    <div>
-        <h2>SIGN IN</h2>
+    <div className='flex w-full h-screen'>
+        <div className="w-full flex items-center justify-center lg:w-1/2"></div>
+        <h2 className='text-4xl'>SIGN IN</h2>
         <form  onSubmit={handleSubmit}>
             <span>E-MAIL</span>
             <input type="text" value={email} onChange={handleEmail} required/>

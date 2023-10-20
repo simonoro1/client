@@ -1,11 +1,14 @@
 import {useEffect, useState} from 'react'
 import { useAuthContext } from './useAuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useLogout } from './useLogOut';
 
 export const useAuth = () => {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
+  const { logout } = useLogout();
   const {dispatch} = useAuthContext()
-  // const nav = useNavigate();
+  const nav = useNavigate();
 
   const checkUser = async () => {
     setError(null);
@@ -22,13 +25,16 @@ export const useAuth = () => {
       }
     )
       .then(response => response.json()).then(data =>{
-        console.log('user already logged')
         dispatch({
           type: 'LOGIN',
           payload: data
         })
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error)
+        logout()
+      }
+      );
 
     return response;
   };

@@ -29,7 +29,7 @@ export const useLogout = () => {
 
     dispatch({ type: "LOGOUT" });
     setIsPending(false);
-    nav("/login");
+    nav("/auth/login");
   };
 
   return { error, isPending, logout };

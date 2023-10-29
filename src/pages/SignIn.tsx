@@ -1,15 +1,23 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useSignIn } from "../hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { error } from 'console';
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { error, isPending, signin } = useSignIn();
   const nav = useNavigate();
+  const {user, token} = useContext(AuthContext)
 
   // Handling the name change
+  useEffect( () => {
 
+    if (user) {
+      nav('/')
+    }
+  }) 
   // Handling the email change
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -32,9 +40,7 @@ function SignIn() {
     setEmail("");
     setPassword("");
 
-    if(!isPending) {
-      nav("/")
-    }
+
     // signin hook
 
   };
@@ -117,6 +123,7 @@ function SignIn() {
             Sign up
           </button>
         </div>
+        {error && <p className="text-red-600">Invalid credentials</p>}
       </form>
     </div>
   );

@@ -3,6 +3,8 @@ import { AuthContext } from "../context/AuthContext";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "../hooks/useLogOut";
+import Sidebar from "../components/SideBar";
+import NavBar from "../components/NavBar";
 
 function Dashboard() {
   const { user, token } = useContext(AuthContext);
@@ -32,17 +34,20 @@ function Dashboard() {
     };
 
     !token ? verifyRefreshToken() : setIsLoading(false);
-  }, []);
+
+  }, [token, user]);
 
 
 
   return (
-    <div className="">
-      <div className="">
-        {user && <p>Hello: {user.name}</p>}
-        <button onClick={handleLogout}>LOG OUT</button>
-      </div>
-    </div>
+      <NavBar/>
+    // <div className="">
+    //   <div className="">
+    //     {/* <Sidebar user = {user}/> */}
+    //     {user && <p>Hello: {user.name}</p>}
+    //     <button onClick={handleLogout}>LOG OUT</button>
+    //   </div>
+    // </div>
   );
 }
 

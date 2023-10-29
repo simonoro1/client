@@ -35,7 +35,9 @@ export const useSignIn = () => {
           payload: data
         })
       })
-      .catch((error) => console.log(error));
+      .catch((error) => 
+      setError(error));
+
 
     return response;
   };

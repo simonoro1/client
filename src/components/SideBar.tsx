@@ -2,15 +2,11 @@ import { Link } from "react-router-dom";
 import DashboardIcon from '../assets/dashboard_icon.svg'
 import AddIcon from '../assets/add_icon.svg'
 
-function Sidebar({user}) {
+function Sidebar() {
  
   return (
-    <div className="flex w-ful h-screen bg-violet-500 lg:w-1/2">
-      <div className="sidebar-content">
-        <div className="user">
-          {user && <p>{user.name}</p>}
-        </div>
-        <nav className="links">
+    <aside className="flex-col h-screen w-40 text-white items-center bg-gray-900">
+        <nav className="">
           <ul>
             <li>
               <Link  to="/">
@@ -26,8 +22,7 @@ function Sidebar({user}) {
             </li>  
           </ul>
         </nav>
-      </div>
-    </div>
+    </aside>
   );
 }
 

@@ -40,7 +40,10 @@ function Dashboard() {
 
 
   return (
+    <div className="flex">
+      <Sidebar/>
       <NavBar/>
+    </div>
     // <div className="">
     //   <div className="">
     //     {/* <Sidebar user = {user}/> */}

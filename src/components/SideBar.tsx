@@ -11,7 +11,7 @@ function Sidebar() {
           <ul className=" w-full h-80 flex-col items-center justify-evenly list-">
             <li className="flex items-center justify-center w-full mb-10">
               <Link  to="/">
-                <svg xmlns="http://www.w3.org/2000/svg" className="text-teal-50 fill-current h-10 w-10 hover:scale-125 border-white"  viewBox="0 0 24 24"><path className="fill-white " fill-rule="evenodd" d="m12 3.188 9.45 7.087-.45 1.35h-.75v8.625H3.75v-8.625H3l-.45-1.35L12 3.187Zm-6.75 6.937v8.625h13.5v-8.625L12 5.062l-6.75 5.063Z" clip-rule="evenodd"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="text-teal-50 fill-current h-10 w-10 hover:scale-125 border-white"  viewBox="0 0 24 24"><path className="fill-white " fillRule="evenodd" d="m12 3.188 9.45 7.087-.45 1.35h-.75v8.625H3.75v-8.625H3l-.45-1.35L12 3.187Zm-6.75 6.937v8.625h13.5v-8.625L12 5.062l-6.75 5.063Z" clipRule="evenodd"/></svg>
               </Link>
             </li>    
               <li className="flex items-center justify-center w-full mb-10 ">

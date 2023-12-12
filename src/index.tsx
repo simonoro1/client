@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Dashboard from "./pages/Dashboard";
 import SignInTemplate from "./App";
+import Signup from "./pages/Signup";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/auth/login",
-    element: <SignInTemplate />,
+    element: <SignInTemplate/>,
   },
+  {
+    path: "/auth/signup",
+    element: <Signup/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(

@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "../hooks/useLogOut";
 import Sidebar from "../components/SideBar";
-// import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 
 function Dashboard() {
   const { user, token } = useContext(AuthContext);
@@ -42,7 +42,7 @@ function Dashboard() {
   return (
     <div className="flex">
       <Sidebar/>
-      {/* <NavBar/> */}
+      <NavBar/>
       Tu gimnasio
       Tu plan
       Ubicacion

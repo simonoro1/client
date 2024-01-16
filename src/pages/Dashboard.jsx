@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useLogout } from "../hooks/useLogOut";
 import Sidebar from "../components/SideBar";
 import NavBar from "../components/Navbar";
+import DueBills from "../components/DueBills";
 
 function Dashboard() {
   const { user, token } = useContext(AuthContext);
@@ -40,14 +41,13 @@ function Dashboard() {
 
 
   return (
-    <div className="flex">
+    <div className="flex overflow-hidden">
       <Sidebar/>
-      <NavBar/>
-      Tu gimnasio
-      Tu plan
-      Ubicacion
-      Estadisticas basicas
-      Cuadro con pdf descargables
+      <div className=" flex-1 md:flex h-screen relative w-full">  
+        <NavBar/>
+        <DueBills/>
+      </div>
+      {/* <h1>WELCOME! {user.name}</h1> */}
     </div>
     // <div className="">
     //   <div className="">

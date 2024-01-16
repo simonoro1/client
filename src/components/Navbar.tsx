@@ -8,25 +8,12 @@ function Navbar() {
     const {user} = useAuthContext()
 
     return (
-        <div className='navbar'>
-            <ul>
-                <li className='logo'>
-                        <img src={Temple} alt='dojo logo'/>
-                        <span>The Dojo</span>
-                </li>
-                <li>
-                    {!user && <Link to='/login'>Login</Link>}
-                </li>
-                <li>
-                    {!user && <Link to='/signup'>SignUp</Link>}
-                </li>
-                <li>
+        <div className='h-20 w-full  bg-white  fixed flex items-center justify-between'>
+                <div className=" flex justify-center items-center w-64 rounded-3xl shadow-xl bg-gray-100 p-2 ml-10">
+                    <p>{user.name}</p>
+                </div>
                     {!isPending && <button className='btn' onClick={logout}>Logout</button>}
                     {isPending && <button className='btn' disabled>Logging out...</button>}
-                </li>
-
-
-            </ul>
         </div>
     )
 }

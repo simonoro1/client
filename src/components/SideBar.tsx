@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Sidebar() {
  
   return (
-    <aside className="flex-col h-screen w-40 text-white items-center justify-center bg-gray-900 p-6">
+    <aside className="flex-col h-screen w-60 text-white items-center justify-center bg-gray-900 p-6 overflow-y-auto ">
       <div className="h-20 w-full flex justify-center mt-5">
       </div>
         <nav className="mt-20">

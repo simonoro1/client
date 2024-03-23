@@ -1,12 +1,17 @@
 import { useState } from "react";
-
+import axios from "axios";
 import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router-dom";
 
 interface signuparam {
-  name: String;
+  userName: String;
   email:String;
   password: String;
+}
+
+interface IUser {
+  token: string,
+  user: string
 }
 
 export const useSignupAwait = () => {
@@ -14,34 +19,25 @@ export const useSignupAwait = () => {
   const { dispatch } = useAuthContext();
   const nav = useNavigate();
 
-
-
-
-  
   const signup = async (user: signuparam) => {
     try {
 
-      const response = await fetch('http://localhost:5000/users/register',{
-        method: "POST", 
-        credentials: 'include',
-        headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(user)
-      }).then( response => response.json()).then(data => {
-        dispatch({
-          type: "LOGIN",
-          payload: data
-        })
-      }).catch(
-        (error) => console.log(error)
-      )
-
-      nav("/");
+      axios.post('http://localhost:5000/users/register', {
+        userName: user.userName,
+        password: user.password,
+        email: user.email
+      })
+      .then( response => {
+        console.log('User Created Succesfully')
+        console.log(response.status)
+        console.log(response.data)
+        nav('/auth/login')
+      })
     } catch (error) {
-      console.error(error);
+      //handle errors !!!
+      console.log(error)
     }
-  };
-  return { error, signup };
-};
+  }
+
+  return {signup};
+}

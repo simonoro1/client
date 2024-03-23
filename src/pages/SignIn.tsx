@@ -11,13 +11,6 @@ function SignIn() {
   const nav = useNavigate();
   const {user, token} = useContext(AuthContext)
 
-  // Handling the name change
-  useEffect( () => {
-
-    if (user) {
-      nav('/')
-    }
-  }) 
   // Handling the email change
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);

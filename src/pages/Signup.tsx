@@ -4,24 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function Signup() {
-  const [name, setName] = useState("");
+  const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, token } = useContext(AuthContext);
 
   const nav = useNavigate();
 
-  const { error, signup } = useSignupAwait();
+  const {signup} = useSignupAwait();
 
-  useEffect(() => {
-    if (user) {
-      nav("/");
-    }
-  });
 
   //Handling the name change
   const handleName = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    setuserName(e.target.value);
   };
   // Handling the email change
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,15 +31,15 @@ function Signup() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const user = {
-      name,
+      userName,
       password,
       email,
     };
 
 
     await signup(user);
-    setEmail("");
-    setPassword("");
+    // setEmail("");
+    // setPassword("");
   };
 
   return (
@@ -62,7 +57,7 @@ function Signup() {
                 className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transaprent"
                 type="text"
                 placeholder="Enter your name"
-                value={name}
+                value={userName}
                 onChange={handleName}
                 required
               />

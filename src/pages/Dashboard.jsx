@@ -16,29 +16,6 @@ function Dashboard() {
   const nav = useNavigate();
   
 
-  const handleLogout = () => {
-    logout();
-  };
-
-  useEffect(() => {
-    
-    const verifyRefreshToken = async () => {
-      // Chequear si hay un usuario logeado y refrescar access token
-
-
-      try {
-        await checkUser();
-      } catch (error) {
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    !token ? verifyRefreshToken() : setIsLoading(false);
-
-  }, [token, user]);
-
-
 
   return (
     <div className="flex overflow-hidden">

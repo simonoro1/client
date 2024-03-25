@@ -24,7 +24,7 @@ function SignIn() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const user = {
-      name: email,
+      email,
       password,
     };
 
